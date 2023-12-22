@@ -242,8 +242,11 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(seconds).padStart(2, '0');
+  const timeString = `${formattedMinutes}:${formattedSeconds}`;
+  return timeString;
 }
 
 /**
@@ -305,8 +308,15 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = 'aeiouyAEIOUY';
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (vowels.indexOf(str[i]) !== -1) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -340,8 +350,15 @@ function isPalindrome(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const strSplit = sentence.split(' ');
+  let longestWord = [''];
+  for (let i = 0; i < strSplit.length; i += 1) {
+    if (strSplit[i].length > longestWord.length) {
+      longestWord = strSplit[i];
+    }
+  }
+  return longestWord;
 }
 
 /**
@@ -354,8 +371,8 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  return str.split('').reverse().join('').split(' ').reverse().join(' ');
 }
 
 /**
@@ -369,8 +386,16 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === str[i].toUpperCase()) {
+      newStr += str[i].toLowerCase();
+    } else {
+      newStr += str[i].toUpperCase();
+    }
+  }
+  return newStr;
 }
 
 /**
